@@ -34,7 +34,7 @@ package LeetCode;
  */
 
 
-public class LongestContinueCommonSubsequence718 {
+public class LongestContinueCommonSubsequence_718 {
 
     public static void main(String[] args) {
         int[] A = {1,2,3,2,1};

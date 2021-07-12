@@ -1,6 +1,6 @@
 package LeetCode;
 // 415
-public class addStrings {
+public class AddStrings_415 {
 
 
     public static void main(String[] args) {

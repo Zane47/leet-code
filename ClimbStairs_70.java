@@ -3,7 +3,7 @@ package LeetCode;
 import java.util.HashMap;
 
 // 70. 爬楼梯
-public class climbStairs {
+public class ClimbStairs_70 {
 
     // 滚动数组
     static class Solution {

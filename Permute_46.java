@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 // 46 回溯算法 全排列
-public class permute46 {
+public class Permute_46 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] nums = new int[] {1, 2, 3};

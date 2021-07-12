@@ -1,5 +1,5 @@
 package LeetCode;
-public class mergeTwoList {
+public class MergeTwoList {
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode();

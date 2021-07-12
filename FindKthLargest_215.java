@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 // 215 数组中的第K个最大元素
-public class findKthLargest {
+public class FindKthLargest_215 {
 
     // 极端情况下：
     // 使用堆最优，k远小于n，时间复杂度O(nlogk)趋近于O(n)，而空间复杂度O(k)则近似于O(1)

@@ -3,7 +3,7 @@ package LeetCode;
 import java.util.List;
 
 // 257
-public class AllBinaryTreePaths {
+public class AllBinaryTreePaths_257 {
     public static class TreeNode {
         int val;
         TreeNode left;

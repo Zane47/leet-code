@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 
 //142
-public class detectCycle142 {
+public class DetectCycle_142 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         // head = [3,2,0,-4], pos = 1

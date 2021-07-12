@@ -2,7 +2,7 @@ package LeetCode;
 // 2两数相加
 // 倒序链表
 
-public class addTwoNumbers2 {
+public class AddTwoNumbers_2 {
     public static void main(String[] args) {
         ListNode l1 = new ListNode(2);
         l1.next = new ListNode(4);

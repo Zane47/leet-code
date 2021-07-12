@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 // 两个数组的交集349
-public class intersection349 {
+public class Intersection_349 {
 
     public static void main(String[] args) {
         int[] nums1 = new int[]{1, 2, 2, 1};
