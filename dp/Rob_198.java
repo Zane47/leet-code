@@ -5,7 +5,7 @@ import javafx.scene.SnapshotParameters;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Rob198 {
+public class Rob_198 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         Scanner sc = new Scanner(System.in);

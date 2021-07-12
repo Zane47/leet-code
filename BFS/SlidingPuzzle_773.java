@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Queue;
 
 // 773 数字华容道
-public class slidingPuzzle773 {
+public class SlidingPuzzle_773 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[][] board = new int[][] {

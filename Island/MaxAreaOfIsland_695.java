@@ -1,6 +1,6 @@
 package LeetCode.Island;
 
-public class maxAreaOfIsland695 {
+public class MaxAreaOfIsland_695 {
 
     public static void main(String[] args) {
         /*int[][] grid = new int[][] {

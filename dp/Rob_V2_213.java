@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // 213 打家劫舍 II
-public class RobII213 {
+public class Rob_V2_213 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         Scanner sc = new Scanner(System.in);

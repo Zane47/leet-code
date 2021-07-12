@@ -1,6 +1,6 @@
 package LeetCode.Island;
 // 463 岛屿边长
-public class islandPerimeter463 {
+public class IslandPerimeter_463 {
     public static void main(String[] args) {
         int[][] v1 = new int[][] {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
 

@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  */
 
-public class longestPalindrome5 {
+public class LongestPalindrome_5 {
 
 
     public static void main(String[] args) {

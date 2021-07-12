@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 // 200，岛屿数量
-public class numIslands200 {
+public class NumIslands_200 {
 
     public static void main(String[] args) {
 
