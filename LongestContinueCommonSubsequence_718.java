@@ -1,4 +1,4 @@
-package LeetCode;
+package leetcode;
 /** 重要！！！
  * "本题与公共子序列（LongestCommonSubsequence）不同，子序列不一定都是连续的，
  * 只要前面有相同的子序列，哪怕当前比较的字符不一样，那么当前字符串之前的子序列也不会为 0。

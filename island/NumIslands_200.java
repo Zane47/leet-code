@@ -1,6 +1,4 @@
-package LeetCode.Island;
-
-import DesignPattern.ProxyPattern.GiveGift;
+package leetcode.island;
 
 import java.util.LinkedList;
 import java.util.Queue;

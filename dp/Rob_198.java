@@ -1,6 +1,4 @@
-package LeetCode.dp;
-
-import javafx.scene.SnapshotParameters;
+package leetcode.dp;
 
 import java.util.ArrayList;
 import java.util.Scanner;

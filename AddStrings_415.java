@@ -1,4 +1,4 @@
-package LeetCode;
+package leetcode;
 // 415
 public class AddStrings_415 {
 

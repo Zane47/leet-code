@@ -1,4 +1,4 @@
-package LeetCode;
+package leetcode;
 // 2两数相加
 // 倒序链表
 

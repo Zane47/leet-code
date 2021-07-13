@@ -1,4 +1,4 @@
-package LeetCode;
+package leetcode;
 // 121. 买卖股票的最佳时机
 
 public class MaxProfit_121 {

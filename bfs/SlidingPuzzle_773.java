@@ -1,4 +1,4 @@
-package LeetCode.BFS;
+package leetcode.bfs;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;

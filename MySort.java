@@ -1,4 +1,4 @@
-package LeetCode;
+package leetcode;
 /*
 * 给定一个数组，请你编写一个函数，返回该数组排序后的形式。
 [5,2,3,1,4]
@@ -8,7 +8,6 @@ package LeetCode;
 [1,2,5,5,6]
 
  * */
-import java.util.*;
 
 public class MySort {
 

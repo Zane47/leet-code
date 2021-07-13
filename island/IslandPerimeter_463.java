@@ -1,4 +1,4 @@
-package LeetCode.Island;
+package leetcode.island;
 // 463 岛屿边长
 public class IslandPerimeter_463 {
     public static void main(String[] args) {

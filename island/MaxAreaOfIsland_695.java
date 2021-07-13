@@ -1,4 +1,4 @@
-package LeetCode.Island;
+package leetcode.island;
 
 public class MaxAreaOfIsland_695 {
 
