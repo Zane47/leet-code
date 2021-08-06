@@ -92,10 +92,12 @@ public class nextPermutation31 {
      * e.g.:
      * step1: 1 5 8 4 7 6 5 3 1
      * 从后往前找到第一个相邻，
+     * 4 -> 7, 下标(3, 4), A[3] < A[4]， 此时的[4, end)为降序
      *
+     * step2: 在[4, end)，中从后往前查找第一个满足A[i] < A[k]的k,是6， A[6] = 5
      *
-     *
-     *
+     * step3：交换，nums变成: 1 5 8 5 7 6 4 3 1
+     * step4：逆序[j, end)使其顺序，1 5 8 5 1 3 4 6 7
      *
      */
     static class Solution {
