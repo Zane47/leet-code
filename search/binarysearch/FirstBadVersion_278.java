@@ -28,10 +28,12 @@ public class FirstBadVersion_278 {
             while (left < right) {
                 int mid = (right - left) / 2 + left;
                 if (isBadVersion(mid)) {
+                    // 答案在区间 [left, mid] 中
                     right = mid;
                 }
                 else {
                     // left mid bad...bad right
+                    // 答案在区间 [mid+1, right] 中
                     left = mid + 1;
                 }
             }
