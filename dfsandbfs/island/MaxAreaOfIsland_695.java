@@ -1,4 +1,4 @@
-package leetcode.island;
+package leetcode.dfsandbfs.island;
 
 public class MaxAreaOfIsland_695 {
 

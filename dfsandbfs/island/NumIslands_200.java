@@ -1,4 +1,4 @@
-package leetcode.island;
+package leetcode.dfsandbfs.island;
 
 import java.util.LinkedList;
 import java.util.Queue;
