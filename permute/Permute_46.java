@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.permute;
 
 import java.util.LinkedList;
 import java.util.List;
