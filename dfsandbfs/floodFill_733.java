@@ -2,6 +2,8 @@ package leetcode.dfsandbfs;
 
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。
@@ -35,14 +37,23 @@ import java.util.Arrays;
 // 类似岛屿问题
 public class floodFill_733 {
     public static void main(String[] args) {
-        int[][] image = new int[][] {
+        /*int[][] image = new int[][] {
             {1, 1, 1},
             {1, 1, 0},
             {1, 0, 1}
         };
         int sr = 1;
         int sc = 1;
-        int newColor = 2;
+        int newColor = 2;*/
+        int[][] image = new int[][] {
+            {0, 0, 0},
+            {0, 1, 1}
+        };
+        int sr = 1;
+        int sc = 1;
+        int newColor = 1;
+
+
         System.out.println(Arrays.deepToString(new Solution().floodFill(image, sr, sc, newColor)));
     }
 
@@ -52,7 +63,36 @@ public class floodFill_733 {
             int rowLength = image.length;
             int colLength = image[0].length;
             int oldColor = image[sr][sc];
-            bfs(image, sr, sc, newColor, rowLength, colLength, oldColor);
+            // 避免重复
+            boolean[][] visit = new boolean[rowLength][colLength];
+            Queue<int[]> queue = new LinkedList<>();
+            queue.add(new int[]{sr, sc});
+
+            while (!queue.isEmpty()) {
+                int[] current = queue.poll();
+                int i = current[0];
+                int j = current[1];
+                if (visit[i][j]) {
+                    continue;
+                }
+                visit[i][j] = true;
+                image[i][j] = newColor;
+                if (i - 1 >= 0 && image[i - 1][j] == oldColor) {
+                    queue.add(new int[]{i - 1, j});
+                }
+                if (i + 1 < rowLength && image[i + 1][j] == oldColor) {
+                    queue.add(new int[]{i + 1, j});
+
+                }
+                if (j - 1 >= 0 && image[i][j - 1] == oldColor) {
+                    queue.add(new int[]{i, j - 1});
+
+                }
+                if (j + 1 < colLength && image[i][j + 1] == oldColor) {
+                    queue.add(new int[]{i, j + 1});
+                }
+            }
+
             return image;
         }
 
