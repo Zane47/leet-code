@@ -32,6 +32,7 @@ import java.util.Arrays;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  *
  */
+// 类似岛屿问题
 public class floodFill_733 {
     public static void main(String[] args) {
         int[][] image = new int[][] {
@@ -45,13 +46,46 @@ public class floodFill_733 {
         System.out.println(Arrays.deepToString(new Solution().floodFill(image, sr, sc, newColor)));
     }
 
-
+    //bfs
     static class Solution {
         public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-
-
+            int rowLength = image.length;
+            int colLength = image[0].length;
+            int oldColor = image[sr][sc];
+            bfs(image, sr, sc, newColor, rowLength, colLength, oldColor);
             return image;
+        }
 
+
+
+
+
+
+    }
+
+    // dfs
+    static class Solution1 {
+        public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+            int rowLength = image.length;
+            int colLength = image[0].length;
+            int oldColor = image[sr][sc];
+            dfs(image, sr, sc, newColor, rowLength, colLength, oldColor);
+            return image;
+        }
+
+        private void dfs(int[][] image, int sr, int sc, int newColor,
+                         int rowLength, int colLength, int oldColor) {
+
+            if (sr >= 0 && sc >= 0 &&
+                sr < rowLength && sc < colLength &&
+                image[sr][sc] == oldColor && newColor != oldColor) {
+                // 一定要有新旧颜色不一样，不然会超时
+                image[sr][sc] = newColor;
+                dfs(image, sr - 1, sc, newColor, rowLength, colLength, oldColor);
+                dfs(image, sr + 1, sc, newColor, rowLength, colLength, oldColor);
+                dfs(image, sr, sc - 1, newColor, rowLength, colLength, oldColor);
+                dfs(image, sr, sc + 1, newColor, rowLength, colLength, oldColor);
+            }
         }
     }
 
