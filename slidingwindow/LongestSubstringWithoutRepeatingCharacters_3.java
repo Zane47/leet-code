@@ -39,20 +39,56 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
     public static void main(String[] args) {
         // String s = "abcabcbb";
         // String s = "pwwkew";
-        String s = "au";
+        String s = "abcabcbb";
 
         System.out.println(new Solution().lengthOfLongestSubstring(s));
     }
 
+    /**
+     * 滑动窗口
+     * 什么是滑动窗口？
+     *
+     * 其实就是一个队列,比如例题中的 abcabcbb，进入这个队列（窗口）为 abc 满足题目要求，当再进入 a，队列变成了 abca，这时候不满足要求。所以，我们要移动这个队列！
+     *
+     * 如何移动？
+     *
+     * 我们只要把队列的左边的元素移出就行了，直到满足题目要求！
+     *
+     * 一直维持这样的队列，找出队列出现最长的长度时候，求出解！
+     *
+     */
+    static class Solution {
+        public int lengthOfLongestSubstring(String s) {
+            if (s.length() == 0) {
+                return 0;
+            }
+            // 记录字符是否出现过
+            HashSet<Character> hashSet = new HashSet<>();
+            int right = 0;
+            int result = 0;
+            for (int left = 0; left < s.length(); left++) {
+                // 移除一个字符, 左指针向右移动一格
+                if (left != 0) {
+                    hashSet.remove(s.charAt(left - 1));
+                }
+                while (right < s.length() && !hashSet.contains(s.charAt(right))) {
+                    hashSet.add(s.charAt(right));
+                    right++;
+                }
+                result = Math.max(result, hashSet.size());
+            }
 
-
+            return result;
+        }
+    }
 
 
     /**
      * 暴力
-     * 输入过长会超时
+     * set
+     * 输入过长 超时
      */
-    static class Solution {
+    static class Solution1 {
         public int lengthOfLongestSubstring(String s) {
             if ("".equals(s)) {
                 return 0;
@@ -65,7 +101,6 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
                     HashSet<Character> set = new HashSet<>();
                     for (int z = 0; z < subString.length(); z++) {
                         set.add(subString.charAt(z));
-
                     }
                     if (set.size() == subString.length()) {
                         max = Math.max(max, subString.length());
