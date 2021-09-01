@@ -23,7 +23,7 @@ public class FirstBadVersion_278 {
 
         int n = 5;
 
-        System.out.println(new Solution().firstBadVersion(5));
+        // System.out.println(new Solution().firstBadVersion(5));
 
 
     }
@@ -33,7 +33,7 @@ public class FirstBadVersion_278 {
      * 由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。
      */
 
-
+/*
     class Solution1 extends VersionControl {
         public int firstBadVersion(int n) {
             int left = 1;
@@ -54,8 +54,8 @@ public class FirstBadVersion_278 {
             return left;
         }
     }
-
-
+*/
+/*
     class Solution2 extends VersionControl {
         public int firstBadVersion(int n) {
             int left = 1;
@@ -77,7 +77,7 @@ public class FirstBadVersion_278 {
         }
     }
 
-
+*/
 
 
 
