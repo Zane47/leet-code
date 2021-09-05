@@ -81,7 +81,9 @@ public class Subsets_78 {
      * 比如先加入一个空集让他成为新的子集，然后每遍历一个元素就在原来的子集的后面追加这个值
      * step1: []
      * step2: 访问1，对原来的空集追加1，[] ,[1]
-     *
+     * step3: 访问2，对原来的每个空集追加2, [], [1], [2], [1,2]
+     * step4: 访问3，对原来的每个空寂追加3
+     * 0 2 4 8 ，size的增长
      */
     static class Solution {
         public List<List<Integer>> subsets(int[] nums) {
