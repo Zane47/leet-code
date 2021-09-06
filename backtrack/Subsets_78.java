@@ -51,7 +51,7 @@ public class Subsets_78 {
      * 递归
      * 逐个枚举，空集的幂集只有空集，每增加一个元素，让之前幂集中的每个集合，追加这个元素，就是新增的子集。
      */
-    static class Solution1 {
+    static class Solution2 {
         public List<List<Integer>> subsets(int[] nums) {
             if (Objects.isNull(nums)) {
                 return null;
@@ -75,8 +75,39 @@ public class Subsets_78 {
         }
     }
 
+    /**
+     * todo: 多看看，想不到这个方法
+     * 位运算
+     * 假设nums三个数字，每一个都可以选择选或者不选
+     * 000 001 010 011 100 101 110 111
+     * 2 * 2 * 2
+     *
+     * 假设nums=[1,2,3,4]，
+     * 二进制的0可以写成0000，代表一个数也不取，
+     * 1=0001表示去第一个数也就是[1]，
+     * 2=0010，表示取第二个数[2]，
+     * 3=0011表示取1和2位[1,2]，
+     * 4=0100表示[3]....15=1111表示[1,2,3,4]
+     */
+    static class Solution1 {
+        public List<List<Integer>> subsets(int[] nums) {
+            List<List<Integer>> result = new ArrayList<List<Integer>>();
+            for (int i = 0; i < Math.pow(2, nums.length); i++) {
+                List<Integer> tempList = new ArrayList<>();
+                for (int j = 0; j < nums.length; j++) {
+                    if (((i >> j) & 1) == 1) {
+                        tempList.add(nums[i]);
+                    }
+                }
+                result.add(tempList);
+            }
+            return result;
+        }
+    }
+
 
     /**
+     * 逐个枚举
      * 1, 2, 3
      * 比如先加入一个空集让他成为新的子集，然后每遍历一个元素就在原来的子集的后面追加这个值
      * step1: []
@@ -85,9 +116,8 @@ public class Subsets_78 {
      * step4: 访问3，对原来的每个空寂追加3
      * 0 2 4 8 ，size的增长
      */
-    static class Solution {
+    static class Solution0 {
         public List<List<Integer>> subsets(int[] nums) {
-
             List<List<Integer>> result = new ArrayList<List<Integer>>();
             // 空集
             result.add(new ArrayList<>());
