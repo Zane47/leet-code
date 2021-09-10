@@ -30,7 +30,7 @@ public class Subsets_78 {
     /**
      * DFS
      */
-    static class Solution2 {
+    static class Solution {
         public List<List<Integer>> subsets(int[] nums) {
             List<List<Integer>> result = new ArrayList<>();
 
