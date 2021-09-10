@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.recursionandbacktracing.recursion;
 
 public class MergeTwoLists_21 {
 
