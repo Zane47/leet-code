@@ -20,6 +20,7 @@ public class MergeTwoLists_21 {
     static class Solution {
         public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
             ListNode node = new ListNode();
+            // 保存第一个
             ListNode result = node;
             if (l1 == null) {
                 return l2;
@@ -49,7 +50,7 @@ public class MergeTwoLists_21 {
             }
 
 
-
+            // 返回头之后的
             return result.next;
         }
     }
