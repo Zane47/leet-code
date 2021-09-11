@@ -35,7 +35,7 @@ import java.util.Queue;
  *
  */
 // 类似岛屿问题
-public class floodFill_733 {
+public class FloodFill_733 {
     public static void main(String[] args) {
         /*int[][] image = new int[][] {
             {1, 1, 1},
