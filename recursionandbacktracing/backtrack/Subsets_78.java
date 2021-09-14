@@ -58,8 +58,12 @@ public class Subsets_78 {
             }
 
             for (int i = start; i < nums.length; i++) {
+                // 数组中的第i个元素加入子集
                 tempList.add(nums[i]);
+                // 从i+1位置继续构造当前子集
                 backTrack(i + 1, k - 1, nums, tempList);
+                // 当前这一步加入的数字从数组中移除，
+                // 每一次上一步的backTrack都会移除数字，那么这一步正好移除的是我们加入的数字
                 tempList.remove(tempList.size() - 1);
             }
         }
