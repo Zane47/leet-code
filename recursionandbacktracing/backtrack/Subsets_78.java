@@ -28,9 +28,21 @@ public class Subsets_78 {
 
 
     /**
+     * backtrack
+     *
+     */
+
+    static class Solution {
+        public List<List<Integer>> subsets(int[] nums) {
+            return null;
+        }
+    }
+
+
+    /**
      * DFS
      */
-    static class Solution {
+    static class Solution00 {
         public List<List<Integer>> subsets(int[] nums) {
             List<List<Integer>> result = new ArrayList<>();
 
