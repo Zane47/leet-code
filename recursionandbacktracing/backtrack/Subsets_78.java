@@ -26,15 +26,81 @@ public class Subsets_78 {
 
     }
 
+    /**
+     * https://leetcode-cn.com/problems/subsets/solution/zi-ji-by-leetcode-solution/
+     *
+     *
+     *
+     */
+    static class Solution {
+        List<List<Integer>> result = new ArrayList<>();
+
+        public List<List<Integer>> subsets(int[] nums) {
+            for (int k = 0; k <= nums.length; k++) {
+                ArrayList<Integer> tempList = new ArrayList<>();
+                backTrack(0, k, nums, tempList);
+            }
+            return result;
+        }
+
+        /**
+         * backTrack运行一次可以构造所有长度为k的子集
+         *
+         * @param start 子集第一个数可以在num中出现的最早位置
+         * @param k     当前需要构造子集的长度
+         * @param nums
+         * @param tempList 正在构造的子集
+         */
+        private void backTrack(int start, int k, int[] nums, ArrayList<Integer> tempList) {
+            if (k == 0) {
+                result.add(new ArrayList<>(tempList));
+                return;
+            }
+
+            for (int i = start; i < nums.length; i++) {
+                tempList.add(nums[i]);
+                backTrack(i + 1, k - 1, nums, tempList);
+                tempList.remove(tempList.size() - 1);
+            }
+        }
+
+
+    }
+
+
+
 
     /**
      * backtrack
      *
      */
+    static class Solution01 {
+        // 结果
+        List<List<Integer>> result = new LinkedList<>();
+        // 放过程符合结果的数据
+        LinkedList<Integer> tempList = new LinkedList<>();
 
-    static class Solution {
         public List<List<Integer>> subsets(int[] nums) {
-            return null;
+
+            if (nums.length == 0) {
+                // 空集情况
+                result.add(new LinkedList<>());
+            }
+
+            backTrack(nums, 0);
+
+            return result;
+        }
+
+        private void backTrack(int[] nums, int start) {
+            // 先把之前的集合加进去
+            result.add(new LinkedList<>(tempList));
+            for (int i = start; i < nums.length; i++) {
+                tempList.add(nums[start]);
+                backTrack(nums, start+1);
+                // 为什么要用LinkedList
+                tempList.removeLast();
+            }
         }
     }
 
