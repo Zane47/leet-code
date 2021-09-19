@@ -24,12 +24,36 @@ public class ClimbingStairs_70 {
      *
      *
      */
+    static class Solution {
+
+
+        public int climbStairs(int n) {
+            int[] step = new int[1000];
+            step[0] = 0;
+            step[1] = 1;
+            step[2] = 2;
+            for (int i = 3; i <= n; i++) {
+                if (step[i] == 0) {
+                    step[i] = step[i-1] + step[i-2];
+                }
+            }
+
+            return step[n];
+
+
+        }
+    }
+
+
+
+
+
 
     /**
      * 记忆化递归
      *
      */
-    static class Solution {
+    static class Solution2 {
         Map<Integer, Integer> map = new HashMap<>();
 
         public int climbStairs(int n) {
