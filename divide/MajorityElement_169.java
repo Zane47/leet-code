@@ -1,5 +1,6 @@
 package leetcode.divide;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -20,11 +21,76 @@ import java.util.Set;
 public class MajorityElement_169 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{3,2,3};
+        int[] nums = new int[]{2,2,1,1,1,2,2};
 
         System.out.println(new Solution().majorityElement(nums));
 
     }
+
+
+    /**
+     * 分治
+     * 此题作为分治法的练习题是不错的，
+     * 分治法的思路在与把多个大问题化解为单位为1或可直接解决的小问题，
+     * 将小问题解决后进行递归处理，重新合并为大问题的答案。
+     * 此题为求众数问题，根据众数定义可知，将一个数组分为两个部分，
+     * 其中一个数组的众数必定为大数组中的众数。
+     *
+     * 所以在此题中，我们先设置递归条件 = 头指针等于尾指针时，返回数组中的这个数。
+     * 递归过程如下：首先我们需要将代码分为两个部分，然后求出两个数组中的众数，
+     * 分别对其进行次数出现的统计（注意统计范围为左数组+右数组），最后将出现次数大的进行返回。
+     *
+     *
+     * 这道题用分治法会有极大的时间复杂度与空间复杂度，所以本题只适合作为练习题入手，
+     * 通过此题可以对分治法的过程有个大概的了解，分治法的精髓在于返回条件的设置，以及递归过程的处理。
+     *
+     * 作者：ander-a
+     * 链接：https://leetcode-cn.com/problems/majority-element/solution/fen-zhi-fa-by-ander-a-e3na/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     */
+    static class Solution {
+        public int majorityElement(int[] nums) {
+            return search(nums, 0, nums.length - 1);
+        }
+
+        private int search(int[] nums, int head, int tail) {
+            // 递归结束条件
+            if (head == tail) {
+                return nums[head];
+            }
+
+            int mid = (head + tail) / 2;
+
+            // 递归求出出现最多的数字是什么
+            int leftMostNum = search(nums, head, mid);
+            int rightMostNum = search(nums, mid + 1, tail);
+
+            // 分别求个数，然后比大小
+            int countOfLeftMostNum = calcCount(nums, leftMostNum, head, tail);
+            int countOfRightMostNum = calcCount(nums, rightMostNum, head, tail);
+
+
+            return countOfLeftMostNum >= countOfRightMostNum ? leftMostNum : rightMostNum;
+
+
+        }
+
+        private int calcCount(int[] nums, int target, int head, int tail) {
+            int count = 0;
+            // 这里要加=，要全部都算，前闭后闭
+            for (int i = head; i <= tail; i++) {
+                if (nums[i] == target) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+
+
+
 
     /**
      * 分治:
@@ -50,9 +116,8 @@ public class MajorityElement_169 {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     // todo: 并不懂
-    static class Solution {
+    static class Solution3 {
         public int majorityElement(int[] nums) {
-
             return majorityElementRec(nums, 0, nums.length - 1);
         }
 
@@ -93,6 +158,19 @@ public class MajorityElement_169 {
 
         }
     }
+
+
+    /**
+     * 排序
+     * 已经知道了大于n/2，所以中位数就是
+     */
+    static class Solution2 {
+        public int majorityElement(int[] nums) {
+            Arrays.sort(nums);
+            return nums[nums.length / 2];
+        }
+    }
+
 
     /**
      * 最原始的
