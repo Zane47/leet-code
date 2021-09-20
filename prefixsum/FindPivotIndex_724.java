@@ -48,17 +48,32 @@ import java.util.Arrays;
 public class FindPivotIndex_724 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 7, 3, 6, 5, 6};
-
+//        int[] nums = new int[]{1, 7, 3, 6, 5, 6};
+        int[] nums = new int[]{2, 1, -1};
         System.out.println(new Solution().pivotIndex(nums));
 
     }
 
     /**
-     * todo: 前缀和
+     * 前缀和
+     * 所有元素的和为total，遍历到i的时候，左侧元素之和为sum，右侧元素之和为total - sum - num[i]
+     * 左右相等：sum = total - sum - num[i]，也就是：2sum + nums[i] = total
      */
     static class Solution {
         public int pivotIndex(int[] nums) {
+            int total = Arrays.stream(nums).sum();
+            int leftSum = 0;
+            for (int i = 0; i < nums.length; i++) {
+                // leftSum + nums[i] + rightSum = total
+                // 其中leftSum == rightSum
+                if (2 * leftSum + nums[i] == total) {
+                    return i;
+                } else {
+                    leftSum += nums[i];
+                }
+
+            }
+            return -1;
 
         }
     }
@@ -74,7 +89,7 @@ public class FindPivotIndex_724 {
             int length = nums.length;
             while (tempPivot < length) {
                 // 1, 7, 3, 6(*0), 5, 6
-                if (calcSum(nums, 0, tempPivot) == calcSum(nums, tempPivot+1, nums.length)) {
+                if (calcSum(nums, 0, tempPivot) == calcSum(nums, tempPivot + 1, nums.length)) {
                     return tempPivot;
                 } else {
                     tempPivot++;
