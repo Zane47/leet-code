@@ -75,6 +75,7 @@ public class DailyTemperatures_739 {
                     // 这里更新的是pop出来的这个下标
                     result[index] = i - index;
                 }
+                // while结束之后再添加，(5,72)添加之前要把stack中所有小于他的都弹出去
                 stack.add(i);
             }
             return result;
