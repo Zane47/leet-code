@@ -70,6 +70,7 @@ public class CheckIfAllIntegersAreCovered_1893 {
             // 处理差分数组
             for (int i = 0; i < ranges.length; i++) {
                 diff[ranges[i][0]]++;
+                // 注意这里是后一位-1, j+1不在覆盖状态，所以在j+1处 -1
                 diff[ranges[i][1]+1]--;
             }
 

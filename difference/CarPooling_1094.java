@@ -18,12 +18,39 @@ public class CarPooling_1094 {
 
     }
 
+    /**
+     * 差分数组
+     */
+    static class Solution {
+        public boolean carPooling(int[][] trips, int capacity) {
+            int[] diff = new int[1001];
+            for (int i = 0; i < trips.length; i++) {
+                diff[trips[i][1]] += trips[i][0];
+
+                // 这里不需要后一位再减，因为这一站就下车
+                // [[2,1,5],[3,5,7]]
+                // 3
+                diff[trips[i][2]] -= trips[i][0];
+            }
+
+            int sum = 0;
+            for (int i = 0; i <= 1000; i++) {
+                sum += diff[i];
+                if (sum > capacity) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+
 
     /**
      * 直接记录上下车的容量变化情况
      * 起始点和下车点同时存在的客人数
      */
-    static class Solution {
+    static class Solution2 {
         public boolean carPooling(int[][] trips, int capacity) {
             // 数据记录变化，每一站的乘客数量
             int[] capacityChanges  = new int[1001];
