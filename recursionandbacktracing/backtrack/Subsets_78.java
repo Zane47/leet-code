@@ -83,14 +83,11 @@ public class Subsets_78 {
         List<List<Integer>> result = new LinkedList<>();
         // 放过程符合结果的数据
         LinkedList<Integer> tempList = new LinkedList<>();
-
         public List<List<Integer>> subsets(int[] nums) {
-
             if (nums.length == 0) {
                 // 空集情况
                 result.add(new LinkedList<>());
             }
-
             backTrack(nums, 0);
 
             return result;
