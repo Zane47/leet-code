@@ -67,8 +67,6 @@ public class Subsets_78 {
                 tempList.remove(tempList.size() - 1);
             }
         }
-
-
     }
 
 
