@@ -25,20 +25,20 @@ public class Heaters_475 {
      *
      *
      */
-    static class Solution {
+    static class Solution11 {
         public int findRadius(int[] houses, int[] heaters) {
             // 用二分的方法就务必注意要排序
             Arrays.sort(houses);
             Arrays.sort(heaters);
 
 
-
+            return 0;
 
 
         }
     }
 
-    class Solution {
+    static class Solution {
         // 二分查找
         public int findRadius(int[] houses, int[] heaters) {
             Arrays.sort(heaters);
@@ -84,7 +84,7 @@ public class Heaters_475 {
     }
 
 
-    class Solution {
+    class Solution12 {
         public int findRadius(int[] houses, int[] heaters) {
             //该法能成立的先决条件为两数组一定都要从小到大排好序
             Arrays.sort(heaters);
