@@ -96,7 +96,7 @@ public class Subsets_78 {
             result.add(new LinkedList<>(tempList));
             for (int i = start; i < nums.length; i++) {
                 tempList.add(nums[start]);
-                backTrack(nums, start+1);
+                backTrack(nums, start + 1);
                 // 为什么要用LinkedList
                 tempList.removeLast();
             }
