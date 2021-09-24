@@ -21,11 +21,12 @@ public class Bag01Test {
         for (int i = 0; i <= wLen; i++) {
             dp[i][0] = value0;
         }
-        //遍历顺序：先遍历物品，再遍历背包容量
+        //遍历顺序：先遍历物品，再遍历背包容量\
+        // 遍历物品
         for (int i = 1; i <= wLen; i++) {
-            // 遍历物品
+
+            // 遍历背包容量
             for (int j = 1; j <= bagSize; j++) {
-                // 遍历背包容量
                 if (j < weight[i - 1]){
                     dp[i][j] = dp[i - 1][j];
                 } else {
