@@ -1,5 +1,11 @@
 package leetcode;
 
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  *
  * 假设有打乱顺序的一群人站成一个队列，数组 people 表示队列中一些人的属性（不一定按顺序）。
@@ -25,10 +31,44 @@ public class QueueReconstructionByHeight_406 {
         new Solution().reconstructQueue(people);
     }
 
+    /**
+     * https://leetcode-cn.com/problems/queue-reconstruction-by-height/solution/406-gen-ju-shen-gao-zhong-jian-dui-lie-java-xian-p/
+     *
+     * 倒序排列，高个子先站好位置，矮个子依次插入
+     * 结果： [7,0], [7,1], [6,1], [5,0], [5,2], [4,4]
+     *
+     * [7,0]
+     * [7,0], [7,1]
+     *
+     *
+     */
     static class Solution {
         public int[][] reconstructQueue(int[][] people) {
+            int length = people.length;
+            // 先根据第一个倒序，遇到相同的再根据第二个正序
+            Arrays.sort(people, new Comparator<int[]>() {
+                @Override
+                public int compare(int[] o1, int[] o2) {
+                    if (o1[0] > o2[0]) {
+                        return o2[0] - o1[0];
+                    } else if (o1[0] == o2[1]) {
+                        // 重点！！： h相同时按照k的正序
+                        return o1[1] - o2[1];
+                    }
+                    return 0;
+                }
+            });
 
+            List<int[]> list = new ArrayList<>();
 
+            // todo: ?????
+            for (int[] i : people) {
+                list.add(i[1], i);
+            }
+
+            for (int i = 0; i < length; i++) {
+
+            }
 
             return people;
         }
