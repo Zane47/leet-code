@@ -54,16 +54,30 @@ public class SubsetsII_90 {
         public List<List<Integer>> subsetsWithDup(int[] nums) {
             // 去重要先排序
             Arrays.sort(nums);
+            // used数组记录哪一个元素在当前路径中被使用了
             boolean[] isUsed = new boolean[nums.length];
             backTrack(nums, 0, isUsed);
             return result;
         }
 
         private void backTrack(int[] nums, int start, boolean[] isUsed) {
-
-
-
-
+            result.add(new ArrayList<>(tempPath));
+            for (int i = start; i < nums.length; i++) {
+                // 避免重复添加
+                // 如果当前元素和前一个元素相同，而且前一个元素没有被访问，
+                // 说明前一个相同的元素在当前层已经被用过了
+                if (i > 0 && nums[i] == nums[i-1] && !isUsed[i-1]) {
+                    continue;
+                }
+                // 加入
+                tempPath.add(nums[i]);
+                isUsed[i] = true;
+                // 回溯
+                backTrack(nums, i + 1, isUsed);
+                // 退出
+                tempPath.remove(tempPath.size() - 1);
+                isUsed[i] = false;
+            }
         }
     }
 

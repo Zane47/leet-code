@@ -88,7 +88,7 @@ public class Subsets_78 {
                 result.add(new ArrayList<>(tempList));
                 return;
             }
-
+            // 子序列，从start开始
             for (int i = start; i < nums.length; i++) {
                 // 数组中的第i个元素加入子集
                 tempList.add(nums[i]);

@@ -104,6 +104,7 @@ public class Permute_46 {
                 result.add(new LinkedList(trackList));
                 return;
             }
+            // 全排列 ，这里是从0开始
             for (int i = 0; i < nums.length; i++) {
                 if (visited[i] == 1) {
                     continue;
