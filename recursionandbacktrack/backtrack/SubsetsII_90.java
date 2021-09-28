@@ -71,11 +71,13 @@ public class SubsetsII_90 {
                 }
                 // 加入
                 tempPath.add(nums[i]);
+                //System.out.println(tempPath);
                 isUsed[i] = true;
                 // 回溯
                 backTrack(nums, i + 1, isUsed);
                 // 退出
                 tempPath.remove(tempPath.size() - 1);
+                //System.out.println(tempPath);
                 isUsed[i] = false;
             }
         }
