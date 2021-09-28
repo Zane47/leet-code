@@ -35,7 +35,7 @@ public class Combinations_77 {
         System.out.println(new Solution().combine(n, k));
     }
 
-    /***
+    /**
      * 要解决 n为100，k为50的情况，暴力写法需要嵌套50层for循环，那么回溯法就用递归来解决嵌套层数的问题。
      *
      * 递归来做层叠嵌套（可以理解是开k层for循环），每一次的递归中嵌套一个for循环，那么递归就可以用于解决多层嵌套循环的问题了。
@@ -88,11 +88,11 @@ public class Combinations_77 {
                return;
             }
             for (int i = start; i <= n ; i++) {
-                System.out.println(tempPath);
                 tempPath.add(i);
+                //System.out.println(tempPath);
                 backTrack(n, k, i + 1);
                 tempPath.remove(tempPath.size() - 1);
-                System.out.println(tempPath);
+                //System.out.println(tempPath);
             }
         }
     }
