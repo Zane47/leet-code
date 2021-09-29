@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.others;
 
 import javax.swing.*;
 import java.lang.reflect.Array;
