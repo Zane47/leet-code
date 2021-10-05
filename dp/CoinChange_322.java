@@ -11,11 +11,11 @@ public class CoinChange_322 {
 
     public static void main(String[] args) {
 
-        /*int[] coins = new int[]{1, 2, 5};
-        int amount = 11;*/
+        int[] coins = new int[]{1, 2, 5};
+        int amount = 11;
 
-        int[] coins = new int[]{2};
-        int amount = 3;
+        /*int[] coins = new int[]{2};
+        int amount = 3;*/
 
         System.out.print(new Solution().coinChange(coins, amount));
     }
@@ -25,6 +25,15 @@ public class CoinChange_322 {
      */
     static class Solution {
         public int coinChange(int[] coins, int amount) {
+
+
+
+
+
+
+
+
+
             return 0;
         }
     }
