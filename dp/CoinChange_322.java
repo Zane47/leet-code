@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 /**
  * 把所有可能的凑硬币方法都穷举出来，然后找找看最少需要多少枚硬币。
- * -> pdd的第一题, 切绳子
+ * -> pdd的第一题, 切绳子, 这里是要总数, pdd的是要具体的每一个的个数
  */
 public class CoinChange_322 {
 
@@ -21,20 +21,100 @@ public class CoinChange_322 {
     }
 
     /**
+     * dp 数组的迭代解法
+     * 自底向上
+     * <p>
+     * dp 数组的定义：当目标金额为 i 时，至少需要 dp[i] 枚硬币凑出。
+     * 目标金额i, 凑出目标金额的最少硬币总数dp[i]
      *
+     * 为啥 dp 数组初始化为 amount + 1 呢，
+     * 因为凑成 amount 金额的硬币数最多只可能等于 amount（全用 1 元面值的硬币），
+     * 所以初始化为 amount + 1 就相当于初始化为正无穷，便于后续取最小值。
+     * 为啥不直接初始化为 int 型的最大值 Integer.MAX_VALUE 呢？
+     * 因为后面有 dp[i - coin] + 1，这就会导致整型溢出。
+     * todo: ???
      */
     static class Solution {
         public int coinChange(int[] coins, int amount) {
+            // dp 数组的定义：当目标金额为 i 时，至少需要 dp[i] 枚硬币凑出。
+            int[] dp = new int[amount + 1];
+            // 数组大小为 amount + 1，初始值也为 amount + 1
+            Arrays.fill(dp, amount + 1);
+            dp[0] = 0;
+            // 外循环遍历所有状态的所有取值
+            for (int i = 0; i < dp.length; i++) {
+                // 内循环遍历所有选择的最小值
+                for (int coin : coins) {
+                    // 子问题无解，跳过
+                    if (i - coin < 0) {
+                        continue;
+                    }
+                    dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
+                }
+
+            }
+            return (dp[amount] == amount + 1) ? -1 : dp[amount];
+        }
+    }
 
 
+    /**
+     * dp(n) 的定义：输入一个目标金额 n，返回凑出目标金额 n 的最少硬币数量。
+     * 带备忘录的递归
+     * 执行用时：24 ms, 在所有 Java 提交中击败了17.16%的用户
+     * 内存消耗：38.5 MB, 在所有 Java 提交中击败了7.76%的用户
+     */
+    static class Solution3 {
 
+        private int[] memo;
 
+        public int coinChange(int[] coins, int amount) {
+            // 0到本身, length+1
+            memo = new int[amount + 1];
+            Arrays.fill(memo, -2);
+            return dp(coins, amount);
+        }
 
+        /**
+         * dp(n) 的定义：输入一个目标金额 n，返回凑出目标金额 n 的最少硬币数量。
+         * 目标金额n, 凑出目标金额n的最少硬币数量为dp(n)
+         *
+         * @param coins
+         * @param amount
+         * @return
+         */
+        private int dp(int[] coins, int amount) {
+            if (amount == 0) {
+                return 0;
+            }
+            if (amount < 0) {
+                return -1;
+            }
 
+            if (memo[amount] != -2) {
+                return memo[amount];
+            }
 
+            int min = Integer.MAX_VALUE;
 
+            for (int coin : coins) {
+                // 子问题的结果
+                int subProblem = dp(coins, amount - coin);
+                // 子问题无解, 跳过
+                if (subProblem == -1) {
+                    continue;
+                }
+                // 在子问题中选择最优解，然后加一
+                min = Math.min(min, subProblem + 1);
+            }
 
-            return 0;
+            if (min == Integer.MAX_VALUE) {
+                memo[amount] = -1;
+            } else {
+                memo[amount] = min;
+            }
+
+            return min == Integer.MAX_VALUE ? -1 : min;
         }
     }
 
@@ -85,10 +165,16 @@ public class CoinChange_322 {
      */
     static class Solution2 {
         public int coinChange(int[] coins, int amount) {
-
             return dp(coins, amount);
         }
 
+        /**
+         * dp(n) 的定义：输入一个目标金额 n，返回凑出目标金额 n 的最少硬币数量。
+         *
+         * @param coins
+         * @param amount
+         * @return
+         */
         private int dp(int[] coins, int amount) {
             if (amount == 0) {
                 return 0;
@@ -125,6 +211,8 @@ public class CoinChange_322 {
         public int coinChange(int[] coins, int amount) {
             // 先做个排序
             Arrays.sort(coins);
+            // 倒序的方法, 但是要转成Integer[]
+            // Arrays.sort(coins, Collections.reverseOrder());
 
             List<List<Integer>> result = new ArrayList<>();
             // 每个coin的数量
