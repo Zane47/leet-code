@@ -1,4 +1,4 @@
-# 数组排序
+# 数组
 ## 数组倒序, 注意是boxed类型
 ```java
 // 322
@@ -31,5 +31,14 @@ Arrays.sort(points, new Comparator<int[]>() {
 ```java
 memo = new int[coins.length];
 Arrays.fill(memo, -2);
+```
+
+# char
+## char转int
+注意不可以使用Integer.valueOf(), 那样子是ascii码
+如果要取ascii码, 也不需要Integer.valueOf(), 直接使用即可
+正确的方式应该是
+```java
+Character.getNumericValue(input.charAt(i))
 ```
 
