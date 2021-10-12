@@ -27,11 +27,19 @@ Arrays.sort(points, new Comparator<int[]>() {
 });
 ```
 
-## 数组初始化
+## 一维数组初始化
 ```java
 memo = new int[coins.length];
 Arrays.fill(memo, -2);
 ```
+## 二维数组初始化
+```java
+// 二维数组的初始化
+for (int i = 0; i < k + 1; i++) {
+    Arrays.fill(memo[i], -1);
+}
+```
+
 
 # char
 ## char转int
