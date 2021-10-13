@@ -131,12 +131,16 @@ public class SuperEggDrop_887 {
              */
             // 遍历楼层
             int result = Integer.MAX_VALUE;
-            // todo: 这里还是有问题
             for (int i = 1; i <= n; i++) {
                 // 计算这次在那一层扔鸡蛋, 最坏的情况, 那就是要计算鸡蛋从这层扔下来, 碎或者没碎哪个最终结果更大
-                int max = Math.max(dp(k - 1, i - 1, memo), dp(k - 1, n - i, memo));
+                // 碎了的话, 鸡蛋数量-1, 从更低楼层开始扔
+                // 没碎的话, 鸡蛋数量不变, 从更高楼层开始扔
+                int max = Math.max(dp(k - 1, i - 1, memo), dp(k, n - i, memo)) + 1;
                 // "至少"
                 result = Math.min(result, max);
+
+
+                // result = Math.min(result, Math.max(dp(k - 1, i - 1, memo), dp(k, n - i, memo)) + 1);
             }
             memo[k][n] = result;
             return result;
