@@ -101,6 +101,12 @@ public class SuperEggDrop_887 {
 
     }
 
+    /**
+     * 会超时
+     * 最后执行的输入：
+     * 6
+     * 10000
+     */
     static class Solution {
         public int superEggDrop(int k, int n) {
             // memo
