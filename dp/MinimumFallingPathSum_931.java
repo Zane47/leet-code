@@ -22,7 +22,7 @@ public class MinimumFallingPathSum_931 {
             int result = Integer.MAX_VALUE;
             int[][] memo = new int[n][n];
             for (int i = 0; i < n; i++) {
-                Arrays.fill(memo[i], );
+                Arrays.fill(memo[i], Integer.MAX_VALUE - 1);
             }
             // 可能落在最后一行的任意一列, 做穷举, 看落到哪一列是最小的
             for (int j = 0; j < n; j++) {
@@ -42,11 +42,11 @@ public class MinimumFallingPathSum_931 {
                 return matrix[i][j];
             }
 
-            if () {
+/*            if () {
 
             }
-
-            return;
+*/
+            return 0;
         }
 
         /**
