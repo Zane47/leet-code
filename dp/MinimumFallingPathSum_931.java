@@ -63,13 +63,12 @@ public class MinimumFallingPathSum_931 {
      * <p>
      * 需要注意的是
      * 1.memo初始化的值, 需要知道memo是否存储了结果, 所以根据题目的范围来进行规划
-     *  1 <= n <= 100, -100 <= matrix[i][j] <= 100
-     *  memo要取取不到的值, max是 100 * 100 = 10000, min是-100*100 = -10000, 区间[-10000, 10000]
-     *  所以memo初始化在这个区间之外就可以了
-     *
+     * 1 <= n <= 100, -100 <= matrix[i][j] <= 100
+     * memo要取取不到的值, max是 100 * 100 = 10000, min是-100*100 = -10000, 区间[-10000, 10000]
+     * 所以memo初始化在这个区间之外就可以了
+     * <p>
      * 2.数据越界情况返回非法值
-     *  应返回一个取不到的值,
-     *
+     * 应返回一个取不到的值,
      */
     static class Solution {
         public int minFallingPathSum(int[][] matrix) {
@@ -81,10 +80,10 @@ public class MinimumFallingPathSum_931 {
                 Arrays.fill(memo[i], 10001);
             }
             // 可能落在最后一行的任意一列, 做穷举, 看落到哪一列是最小的
-            for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
                 // [0, n-1]行
                 // result = Math.min(result, dpBruteForce(matrix, n - 1, j));
-                result = Math.min(result, dpWithMemo(matrix, n - 1, j, memo));
+                result = Math.min(result, dpWithMemo(matrix, n - 1, i, memo));
             }
 
             return result;
@@ -105,7 +104,7 @@ public class MinimumFallingPathSum_931 {
                 return memo[i][j];
             }
 
-            memo[i][j] =
+            memo[i][j] = matrix[i][j] +
                 min(dpWithMemo(matrix, i - 1, j, memo),
                     dpWithMemo(matrix, i - 1, j - 1, memo),
                     dpWithMemo(matrix, i - 1, j + 1, memo));
