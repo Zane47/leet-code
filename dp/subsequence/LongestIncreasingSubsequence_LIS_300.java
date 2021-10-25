@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.subsequence;
 
 import java.util.Arrays;
 

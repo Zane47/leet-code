@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.game;
 
 import java.util.ArrayList;
 import java.util.Scanner;

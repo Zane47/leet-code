@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.game;
 
 /**
  * 鸡蛋掉落
