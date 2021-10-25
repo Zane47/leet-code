@@ -31,6 +31,18 @@ import java.util.Arrays;
  * 输入：matrix = [[-48]]
  * 输出：-48
  * <p>
+ * <p>
+ * 提示：
+ * <p>
+ * n == matrix.length
+ * n == matrix[i].length
+ * 1 <= n <= 100
+ * -100 <= matrix[i][j] <= 100
+ * <p>
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/minimum-falling-path-sum
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/minimum-falling-path-sum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
@@ -38,9 +50,9 @@ import java.util.Arrays;
 public class MinimumFallingPathSum_931 {
     public static void main(String[] args) {
         int[][] matrix = new int[][]{
-                {2, 1, 3},
-                {6, 5, 4},
-                {7, 8, 9}
+            {2, 1, 3},
+            {6, 5, 4},
+            {7, 8, 9}
         };
         System.out.print(new Solution().minFallingPathSum(matrix));
     }
@@ -48,6 +60,16 @@ public class MinimumFallingPathSum_931 {
     /**
      * (i, j) -> (i-1, j), (i-1, j-1), (i-1, j+1)
      * int dp(matrix, i, j): 从第一行matrix(0, ...),一直落到位置matrix[i][j]的最小路径和
+     * <p>
+     * 需要注意的是
+     * 1.memo初始化的值, 需要知道memo是否存储了结果, 所以根据题目的范围来进行规划
+     *  1 <= n <= 100, -100 <= matrix[i][j] <= 100
+     *  memo要取取不到的值, max是 100 * 100 = 10000, min是-100*100 = -10000, 区间[-10000, 10000]
+     *  所以memo初始化在这个区间之外就可以了
+     *
+     * 2.数据越界情况返回非法值
+     *  应返回一个取不到的值,
+     *
      */
     static class Solution {
         public int minFallingPathSum(int[][] matrix) {
@@ -55,36 +77,40 @@ public class MinimumFallingPathSum_931 {
             int result = Integer.MAX_VALUE;
             int[][] memo = new int[n][n];
             for (int i = 0; i < n; i++) {
-                Arrays.fill(memo[i], Integer.MAX_VALUE - 1);
                 // 这边的初始化是多少?
-                Arrays.fill(memo[i], -1);
+                Arrays.fill(memo[i], 10001);
             }
             // 可能落在最后一行的任意一列, 做穷举, 看落到哪一列是最小的
             for (int j = 0; j < n; j++) {
                 // [0, n-1]行
                 // result = Math.min(result, dpBruteForce(matrix, n - 1, j));
-                result = Math.min(result, dpWithMemo(matrix, n - 1, j));
+                result = Math.min(result, dpWithMemo(matrix, n - 1, j, memo));
             }
 
             return result;
         }
 
-        private int dpWithMemo(int[][] matrix, int i, int j) {
+        /**
+         * 带备忘录的方法
+         */
+        private int dpWithMemo(int[][] matrix, int i, int j, int[][] memo) {
             if (i < 0 || j < 0 || i >= matrix.length || j >= matrix.length) {
-                return Integer.MAX_VALUE - 1;
+                return 100002;
             }
             if (i == 0) {
                 return matrix[i][j];
             }
             // 读取备忘录
-            /*if () {
-
-/*            if () {
-
+            if (memo[i][j] != 10001) {
+                return memo[i][j];
             }
-*/
 
-            return 0;
+            memo[i][j] =
+                min(dpWithMemo(matrix, i - 1, j, memo),
+                    dpWithMemo(matrix, i - 1, j - 1, memo),
+                    dpWithMemo(matrix, i - 1, j + 1, memo));
+
+            return memo[i][j];
         }
 
         /**
@@ -106,8 +132,8 @@ public class MinimumFallingPathSum_931 {
 
             // 状态转移, matrix[i][j] + min(三个位置)
             return matrix[i][j] +
-                    min(dpBruteForce(matrix, i - 1, j),
-                            dpBruteForce(matrix, i - 1, j - 1), dpBruteForce(matrix, i - 1, j + 1));
+                min(dpBruteForce(matrix, i - 1, j),
+                    dpBruteForce(matrix, i - 1, j - 1), dpBruteForce(matrix, i - 1, j + 1));
         }
 
 
