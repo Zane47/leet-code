@@ -14,7 +14,8 @@ import java.util.Arrays;
 public class LongestIncreasingSubsequence_LIS_300 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
+        // int[] nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
+        int[] nums = new int[]{1, 4, 3, 4, 2, 3};
 
         System.out.println(new Solution().lengthOfLIS(nums));
     }
@@ -32,10 +33,9 @@ public class LongestIncreasingSubsequence_LIS_300 {
     }
 
 
-
     /**
      * https://labuladong.github.io/algo/3/24/65/
-     *
+     * <p>
      * 运用数学归纳法的思想，假设 dp[0...i-1] 都已知，想办法求出 dp[i]，一旦这一步完成，整个题目基本就解决了。
      *
      * <p>
@@ -56,9 +56,8 @@ public class LongestIncreasingSubsequence_LIS_300 {
      * if (nums[i] > nums[j])
      * dp[i] = Math.max(dp[i], dp[j] + 1);
      * }
-     *
+     * <p>
      * O(N^2)
-     *
      */
     static class Solution {
         public int lengthOfLIS(int[] nums) {

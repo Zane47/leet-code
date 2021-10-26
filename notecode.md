@@ -50,3 +50,11 @@ for (int i = 0; i < k + 1; i++) {
 Character.getNumericValue(input.charAt(i))
 ```
 
+#List
+## list默认初始化
+```java
+List<Apple> inventory = Arrays.asList(
+    new Apple(80,"green"),
+    new Apple(155, "green"),
+    new Apple(120, "red"));
+```
