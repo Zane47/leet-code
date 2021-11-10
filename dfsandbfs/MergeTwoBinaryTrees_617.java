@@ -1,6 +1,5 @@
 package leetcode.dfsandbfs;
 
-import com.sun.media.sound.RIFFInvalidDataException;
 
 import java.util.LinkedList;
 import java.util.Queue;
