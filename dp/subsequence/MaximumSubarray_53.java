@@ -48,6 +48,17 @@ public class MaximumSubarray_53 {
         System.out.println(new Solution().maxSubArray(nums));
     }
 
+
+    /**
+     * 按照pat1007的方法提示，其实只需要一个temp来代表dp[i-1]就可以了
+     * 我们不需要整个dp数组
+     */
+    static class Solution {
+        public int maxSubArray(int[] nums) {
+            return 0;
+        }
+    }
+
     /**
      * dp[i]：表示以 nums[i] 结尾 的 连续 子数组的最大和。
      * 状态转移：nums[i]是一定会被选中的，现在的问题就在于dp[i]是dp[i-1]+nums[i]，还是nums[i]
