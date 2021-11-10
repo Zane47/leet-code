@@ -45,7 +45,7 @@ public class MaximumSubarray_53 {
     public static void main(String[] args) {
         int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
-        System.out.println(new Solution().maxSubArray(nums));
+        System.out.println(new Solution2().maxSubArray(nums));
     }
 
 
@@ -53,10 +53,26 @@ public class MaximumSubarray_53 {
      * todo:
      * 按照pat1007的方法提示，其实只需要一个temp来代表dp[i-1]就可以了
      * 我们不需要整个dp数组
+     * 输入-1, 直接走到了max
+     * 输入； [-2,-1]
      */
     static class Solution2 {
         public int maxSubArray(int[] nums) {
-            return 0;
+            int temp = 0;
+            int max = nums[0];
+
+            for (int i = 0; i < nums.length; i++) {
+                temp = temp + nums[i];
+                if (temp >= 0) {
+                    if (temp > max) {
+                        max = temp;
+                    }
+                } else {
+                    // 小于0的时候temp直接舍弃掉，从下一个新的nums[i]开始
+                    temp = 0;
+                }
+            }
+            return max;
         }
     }
 
