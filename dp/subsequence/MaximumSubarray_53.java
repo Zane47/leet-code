@@ -50,10 +50,11 @@ public class MaximumSubarray_53 {
 
 
     /**
+     * todo:
      * 按照pat1007的方法提示，其实只需要一个temp来代表dp[i-1]就可以了
      * 我们不需要整个dp数组
      */
-    static class Solution1 {
+    static class Solution2 {
         public int maxSubArray(int[] nums) {
             return 0;
         }
