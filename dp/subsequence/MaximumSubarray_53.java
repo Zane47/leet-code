@@ -2,9 +2,9 @@ package leetcode.dp.subsequence;
 
 /**
  * 53.最大子序和
- *
+ * <p>
  * -> pat 1007 注意其中的变化
- *
+ * <p>
  * 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和
  * <p>
  * <p>
@@ -44,32 +44,32 @@ public class MaximumSubarray_53 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
-
+        nums = new int[]{-2, -1};
         System.out.println(new Solution2().maxSubArray(nums));
     }
 
 
     /**
-     * todo:
      * 按照pat1007的方法提示，其实只需要一个temp来代表dp[i-1]就可以了
      * 我们不需要整个dp数组
+     *
      * 输入-1, 直接走到了max
-     * 输入； [-2,-1]
+     * 输入； [-2,-1] -> 应该输出-1
      */
     static class Solution2 {
         public int maxSubArray(int[] nums) {
-            int temp = 0;
+            // 用temp来记录dp[i-1]
+            int temp = nums[0];
             int max = nums[0];
 
-            for (int i = 0; i < nums.length; i++) {
-                temp = temp + nums[i];
-                if (temp >= 0) {
-                    if (temp > max) {
-                        max = temp;
-                    }
+            for (int i = 1; i < nums.length; i++) {
+                if (temp <= 0) {
+                    temp = nums[i];
                 } else {
-                    // 小于0的时候temp直接舍弃掉，从下一个新的nums[i]开始
-                    temp = 0;
+                    temp = temp + nums[i];
+                }
+                if (temp > max) {
+                    max = temp;
                 }
             }
             return max;
@@ -81,8 +81,8 @@ public class MaximumSubarray_53 {
      * 状态转移：nums[i]是一定会被选中的，现在的问题就在于dp[i]是dp[i-1]+nums[i]，还是nums[i]
      * 因为我们可以看到，-3的情况下，dp[1] = -2+1 = -1, dp[2]可以是-2+1+(-3)，也可以直接是-3,
      * 就取决于dp[2] > 0？，是否有增益的效果
-     *
-     *
+     * <p>
+     * <p>
      * https://leetcode-cn.com/problems/maximum-subarray/solution/dong-tai-gui-hua-fen-zhi-fa-python-dai-ma-java-dai/
      */
     static class Solution {
@@ -92,10 +92,10 @@ public class MaximumSubarray_53 {
             int max = nums[0];
 
             for (int i = 1; i < nums.length; i++) {
-                if (dp[i-1] <= 0) {
+                if (dp[i - 1] <= 0) {
                     dp[i] = nums[i];
                 } else {
-                    dp[i] = dp[i-1] + nums[i];
+                    dp[i] = dp[i - 1] + nums[i];
                 }
                 if (dp[i] > max) {
                     max = dp[i];
