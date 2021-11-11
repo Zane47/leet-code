@@ -1,6 +1,6 @@
 package leetcode.linkedlist;
 
-/**
+/**todo
  * 给你一个链表，每k个节点一组进行翻转，请你返回翻转后的链表。
  *
  * k是一个正整数，它的值小于或等于链表的长度。
@@ -28,20 +28,9 @@ public class ReverseNodesInKGroup_25 {
     static class Solution {
         public ListNode reverseKGroup(ListNode head, int k) {
 
-
-            reverse(head);
-
             return null;
         }
 
-        private void reverse(ListNode head) {
-            ListNode pre = null, cur = head, next = head;
-
-
-
-
-
-        }
     }
 
 
