@@ -1,8 +1,16 @@
 package leetcode.linkedlist;
 
-import java.util.Objects;
+/**
+ * 反转链表
+ * 1 -> 2 -> 3 -> 4 -> 5
+ * 翻转输出：
+ * 5 -> 4 -> 3 -> 2 -> 1
+ *
+ * 输入：head = [1,2,3,4,5]
+ * 输出：[5,4,3,2,1]
+ */
 
-public class ReserveLink_206 {
+public class ReverseLinkedList_206 {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
