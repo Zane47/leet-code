@@ -29,15 +29,24 @@ public class ReverseNodesInKGroup_25 {
      */
     static class Solution {
         public ListNode reverseKGroup(ListNode head, int k) {
+            if (head == null) {
+                return null;
+            }
+            // 区间 [startNode, endNode) 包含 k 个待反转元素
+            ListNode startNode = head;
             ListNode endNode = head;
 
             for (int i = 0; i < k; i++) {
+                // 不足 k 个，不需要反转，base case
+                if (endNode == null) {
+                    return head;
+                }
                 endNode = endNode.next;
             }
             // 反转前 k 个元素
-            ListNode newHeadNode = reverseKList(head, endNode);
-            newHeadNode.next = reverseKGroup(newHeadNode, k);
-            return null;
+            ListNode newHeadNode = reverseKList(startNode, endNode);
+            startNode.next = reverseKGroup(endNode, k);
+            return newHeadNode;
         }
 
         /**
