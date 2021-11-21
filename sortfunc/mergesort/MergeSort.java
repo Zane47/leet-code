@@ -1,4 +1,4 @@
-package leetcode.sortfunc;
+package leetcode.sortfunc.mergesort;
 
 public class MergeSort {
 
