@@ -36,12 +36,13 @@ public class ReorderList_143 {
      * 第二种方法:
      * 目标链表: 将原链表的左半端和反转后的右半端合并后的结果。
      *
-     * step1: 找到中间节点 -> lc876
-     * step2: 右半段翻转 -> lc206
+     * step1: 找到中间节点 -> lc876, 快慢指针
+     * step2: 右半段翻转 -> lc206,  reverse
      * step3: 两个链表合并
      */
     static class Solution2 {
         public void reorderList(ListNode head) {
+
 
 
         }
