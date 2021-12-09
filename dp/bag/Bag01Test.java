@@ -1,37 +1,56 @@
 package leetcode.dp.bag;
 
+/**
+ * 那么可以有两个方向推出来dp[i][v]
+ *
+ * 1. 不放物品i：由dp[i - 1][v]推出，即背包容量为v，里面不放物品i的最大价值，
+ * 此时dp[i][j]就是dp[i - 1][v]。
+ * (其实就是当物品i的重量大于背包v的重量时, 物品i无法放进背包中, 所以被背包内的价值依然和前面相同。)
+ *
+ *
+ * 2. 放物品i：由dp[i - 1][v - weight[i]]推出，
+ * dp[i - 1][v - weight[i]] 为背包容量为j - weight[i]的时候不放物品i的最大价值，
+ * 那么dp[i - 1][v - weight[i]] + value[i](物品i的价值), 就是背包放物品i得到的最大价值
+ *
+ *
+ *
+ */
 public class Bag01Test {
 
     public static void main(String[] args) {
         int[] weight = {1, 3, 4};
         int[] value = {15, 20, 30};
         int bagSize = 4;
-        testWeightBagProblem(weight, value, bagSize);
+        testWeightBagProblem(weight.length, weight, value, bagSize);
     }
 
-    public static void testWeightBagProblem(int[] weight, int[] value, int bagSize) {
-        int wLen = weight.length, value0 = 0;
-        //定义dp数组：dp[i][j]表示背包容量为j时，前i个物品能获得的最大价值
-        int[][] dp = new int[wLen + 1][bagSize + 1];
-        //初始化：背包容量为0时，能获得的价值都为0
-        for (int i = 0; i <= wLen; i++) {
-            dp[i][0] = value0;
-        }
-        //遍历顺序：先遍历物品，再遍历背包容量
-        // 遍历物品
-        for (int i = 1; i <= wLen; i++) {
+    public static void testWeightBagProblem(int n, int[] weight, int[] value, int bagSize) {
+        // dp[i][v]: dp[i][j]表示背包容量为j时，前i个物品能获得的最大价值
+        // 前i件物品(1<=i<=n, 0<=v<=V)恰好装入容量为v的背包中所能获得的最大价值
+        int[][] dp = new int[n + 1][bagSize + 1];
 
+        // 初始化：背包容量为0时，能获得的价值都为0
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 0;
+        }
+
+        // 遍历顺序：先遍历物品，再遍历背包容量
+        // 遍历物品, n为物品个数
+        for (int i = 1; i <= n; i++) {
             // 遍历背包容量
-            for (int j = 1; j <= bagSize; j++) {
-                if (j < weight[i - 1]) {
-                    dp[i][j] = dp[i - 1][j];
+            for (int v = 1; v <= bagSize; v++) {
+                // 其实就是当物品i的重量大于背包v的重量时,
+                // 物品i无法放进背包中, 所以被背包内的价值依然和前面相同
+                if (weight[i - 1] > v) {
+                    dp[i][v] = dp[i - 1][v];
                 } else {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + value[i - 1]);
+                    // 物品i可以放入背包, 看要不要放入
+                    dp[i][v] = Math.max(dp[i - 1][v], dp[i - 1][v - weight[i - 1]] + value[i - 1]);
                 }
             }
         }
         //打印dp数组
-        for (int i = 0; i <= wLen; i++) {
+        for (int i = 0; i <= n; i++) {
             for (int j = 0; j <= bagSize; j++) {
                 System.out.print(dp[i][j] + " ");
             }
