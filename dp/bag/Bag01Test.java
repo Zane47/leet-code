@@ -33,7 +33,9 @@ public class Bag01Test {
 
     public static void testWeightBagProblem(int n, int[] weight, int[] value, int bagSize) {
         // dp[i][v]: dp[i][j]表示背包容量为j时，前i个物品能获得的最大价值
-        // 前i件物品(1<=i<=n, 0<=v<=V)恰好装入容量为v的背包中所能获得的最大价值
+        //
+        //
+        // pat算法笔记中: 前i件物品(1<=i<=n, 0<=v<=V)恰好装入容量为v的背包中所能获得的最大价值
         int[][] dp = new int[n + 1][bagSize + 1];
 
         // 初始化：背包容量为0时，能获得的价值都为0
