@@ -2,25 +2,22 @@ package leetcode.dp.bag;
 
 /**
  * https://github.com/youngyangyang04/leetcode-master/blob/master/problems/%E8%83%8C%E5%8C%85%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%8001%E8%83%8C%E5%8C%85-1.md
- *
+ * <p>
  * dp[i][j]的含义：
  * 从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。
- *
+ * <p>
  * !!! 这里的dp和下文的dp概念不一样
- *
+ * <p>
  * 那么可以有两个方向推出来dp[i][v]
- *
+ * <p>
  * 1. 不放物品i：由dp[i - 1][v]推出，即背包容量为v，里面不放物品i的最大价值，
  * 此时dp[i][j]就是dp[i - 1][v]。
  * (其实就是当物品i的重量大于背包v的重量时, 物品i无法放进背包中, 所以被背包内的价值依然和前面相同。)
- *
- *
+ * <p>
+ * <p>
  * 2. 放物品i：由dp[i - 1][v - weight[i]]推出，
  * dp[i - 1][v - weight[i]] 为背包容量为j - weight[i]的时候不放物品i的最大价值，
  * 那么dp[i - 1][v - weight[i]] + value[i](物品i的价值), 就是背包放物品i得到的最大价值
- *
- *
- *
  */
 public class Bag01Test {
 
@@ -33,9 +30,12 @@ public class Bag01Test {
 
     public static void testWeightBagProblem(int n, int[] weight, int[] value, int bagSize) {
         // dp[i][v]: dp[i][j]表示背包容量为j时，前i个物品能获得的最大价值
-        //
+        // 前i个物品: [0,i-1]
         //
         // pat算法笔记中: 前i件物品(1<=i<=n, 0<=v<=V)恰好装入容量为v的背包中所能获得的最大价值
+
+        // 前n个数, [0,n], 开的数组是n+1
+        // 这是前缀形题目的注意点
         int[][] dp = new int[n + 1][bagSize + 1];
 
         // 初始化：背包容量为0时，能获得的价值都为0
