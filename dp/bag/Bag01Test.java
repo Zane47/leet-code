@@ -1,6 +1,13 @@
 package leetcode.dp.bag;
 
 /**
+ * https://github.com/youngyangyang04/leetcode-master/blob/master/problems/%E8%83%8C%E5%8C%85%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%8001%E8%83%8C%E5%8C%85-1.md
+ *
+ * dp[i][j]的含义：
+ * 从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。
+ *
+ * !!! 这里的dp和下文的dp概念不一样
+ *
  * 那么可以有两个方向推出来dp[i][v]
  *
  * 1. 不放物品i：由dp[i - 1][v]推出，即背包容量为v，里面不放物品i的最大价值，
@@ -44,7 +51,7 @@ public class Bag01Test {
                 if (weight[i - 1] > v) {
                     dp[i][v] = dp[i - 1][v];
                 } else {
-                    // 物品i可以放入背包, 看要不要放入
+                    // 物品i可以放入背包,重量小于背包容量, 看要不要放入
                     dp[i][v] = Math.max(dp[i - 1][v], dp[i - 1][v - weight[i - 1]] + value[i - 1]);
                 }
             }
