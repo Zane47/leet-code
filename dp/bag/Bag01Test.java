@@ -1,9 +1,5 @@
 package leetcode.dp.bag;
 
-/**
- * @author czhang27@trip.com
- * @date 2021/9/24
- */
 public class Bag01Test {
 
     public static void main(String[] args) {
