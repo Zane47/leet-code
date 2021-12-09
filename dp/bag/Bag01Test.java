@@ -50,6 +50,7 @@ public class Bag01Test {
             for (int v = 1; v <= bagSize; v++) {
                 // 其实就是当物品i的重量大于背包v的重量时,
                 // 物品i无法放进背包中, 所以被背包内的价值依然和前面相同
+                // 第i个数的下标是i-1
                 if (weight[i - 1] > v) {
                     dp[i][v] = dp[i - 1][v];
                 } else {
