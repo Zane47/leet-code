@@ -26,6 +26,8 @@ public class Bag01Test_2 {
 
         // 遍历
         // 前i个, [0, i-1], 第i-1个
+        // 双for范围都是[1, n/V], 初始化过来, 第0行和第0列都初始化成0了
+        // 从第1行和第1列开始遍历
         for (int i = 1; i <= n; i++) {
             for (int v = 1; v <= bagSize; v++) {
                 // 重量大于v, 放不下
