@@ -3,6 +3,10 @@ package leetcode.dp.bag;
 
 import java.util.Arrays;
 
+/**
+ * 自己的写法
+ * 时间和空间复杂度O(nV)
+ */
 public class Bag01Test_2 {
     public static void main(String[] args) {
         int[] weight = {1, 3, 4};
