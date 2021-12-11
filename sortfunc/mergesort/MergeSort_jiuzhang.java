@@ -7,6 +7,9 @@ import java.util.Arrays;
  * https://www.cnblogs.com/chengxiao/p/6194356.html
  * 因为需要合并, 所以要开辟n的空间
  * 递归的写法
+ *
+ * !!! 执行流程见图: https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161218163120151-452283750.png
+ *
  */
 public class MergeSort_jiuzhang {
     public static void main(String[] args) {
@@ -24,7 +27,6 @@ public class MergeSort_jiuzhang {
             // use a shared temp array, the extra memory is O(n) at least
             // 归并的时候使用
             int[] temp = new int[nums.length];
-
 
             mergeSortFunc(nums, 0, nums.length - 1, temp);
         }
@@ -75,6 +77,4 @@ public class MergeSort_jiuzhang {
             
         }
     }
-
-
 }
