@@ -22,6 +22,7 @@ public class Bag01Test_3 {
         int[] dp = new int[V + 1];
 
         //遍历顺序：先遍历物品，再遍历背包容量
+        // [0, n), weight和value就是第i个
         for (int i = 0; i < n; i++) {
             for (int v = V; v >= weight[i]; v--) {
                 // 此时dp[j]有两个选择，
