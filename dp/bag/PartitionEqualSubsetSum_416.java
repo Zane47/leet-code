@@ -17,10 +17,10 @@ import java.util.Arrays;
 public class PartitionEqualSubsetSum_416 {
     public static void main(String[] args) {
         int[] nums = {1, 5, 11, 5};
-        System.out.println(new Solution().canPartition(nums));
+        System.out.println(new Solution2().canPartition(nums));
     }
 
-    /**
+    /**ac
      * 二维dp
      * dp[i][v] = x, 对于前i个物品, 背包容量为v的时候, x==true: 恰好可以把背包装满, 反之则反
      * <p>
@@ -86,6 +86,58 @@ public class PartitionEqualSubsetSum_416 {
             }
 
             return dp[n][V];
+        }
+    }
+
+    /**
+     * dp[i][j]:前i个数里挑出若干个数总和<=j的最大和是多少
+     * ac
+     */
+    static class Solution2 {
+        public boolean canPartition(int[] nums) {
+            int n = nums.length;
+
+            int sum = Arrays.stream(nums).sum();
+            // sum为奇数的时候, 不可能分成两个等和的子集
+            if (sum % 2 == 1) {
+                return false;
+            }
+
+            // 对于前i个物品, 背包容量为v的时候, 是否可以把背包装满
+            int V = sum / 2;
+            int[][] dp = new int[n + 1][V + 1];
+
+            // 初始化base case
+            Arrays.fill(dp[0], 0);
+            for (int i = 0; i <= n; i++) {
+                dp[i][0] = 0;
+            }
+
+            for (int i = 1; i <= n; i++) {
+                for (int v = 1; v <= V; v++) {
+                    // 重量大于v, 放不下
+                    if (nums[i - 1] > v) {
+                        dp[i][v] = dp[i - 1][v];
+                    } else {
+                        // 可以放下, 看要不要放下
+                        // 1. 前i-1个数可以组成v, 那么要不要第i个数都可以
+                        // 2. 前i-1个数不可以组成v,
+                        // 那么看前i-1个数能不能组成v-nums[i]
+                        // 否则就要看看在前i-1个数是否可以凑出v-nums[i]的和
+                        // dp[i][v] =  dp[i-1][v] or dp[i-1][v-nums[i]]
+
+
+                        // 要么前i-1个数中已经凑出了v的和
+                        // 要么前i-1个数凑出了v-nums[i]的和, 那么这次直接加上nums[i]
+
+                        dp[i][v] = Math.max(
+                                dp[i - 1][v],
+                                dp[i - 1][v - nums[i - 1]] + nums[i - 1]);
+                    }
+                }
+            }
+
+            return dp[n][V] == V;
         }
     }
 
