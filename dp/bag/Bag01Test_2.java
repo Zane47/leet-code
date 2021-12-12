@@ -38,7 +38,7 @@ public class Bag01Test_2 {
                 if (weight[i - 1] > v) {
                     dp[i][v] = dp[i - 1][v];
                 } else {
-                    // 可以放下, 看要不要芳
+                    // 可以放下, 看要不要放
                     dp[i][v] = Math.max(dp[i - 1][v], dp[i - 1][v - weight[i - 1]] + value[i - 1]);
                 }
             }
