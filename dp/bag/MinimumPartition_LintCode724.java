@@ -2,7 +2,7 @@ package leetcode.dp.bag;
 
 import java.util.Arrays;
 
-/**todo: 有问题
+/**ac
  * 将数组划分为两组， 两组分别求和之后的差最小:
  * <p>
  * 给出一个正整数数组，写一个程序把这个整数数组分成S1跟S2两部分，
@@ -16,7 +16,8 @@ import java.util.Arrays;
  */
 public class MinimumPartition_LintCode724 {
     public static void main(String[] args) {
-        int[] nums = {1, 6, 11, 5};
+        // int[] nums = {1, 6, 11, 5};
+        int[] nums = {1, 2, 3, 4};
         System.out.println(new Solution().findMin(nums));
     }
 
@@ -33,7 +34,7 @@ public class MinimumPartition_LintCode724 {
             int[][] dp = new int[n + 1][V + 1];
 
             for (int i = 1; i <= n; i++) {
-                for (int v = 1; v < V; v++) {
+                for (int v = 1; v <= V; v++) {
                     if (v < nums[i - 1]) {
                         dp[i][v] = dp[i - 1][v];
                     } else {
@@ -52,7 +53,7 @@ public class MinimumPartition_LintCode724 {
                 }
             }
 
-            return Math.abs(sum - halfMax);
+            return Math.abs((sum - halfMax) - halfMax);
 
         }
     }
