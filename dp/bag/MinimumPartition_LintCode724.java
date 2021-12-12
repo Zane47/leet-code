@@ -1,8 +1,13 @@
 package leetcode.dp.bag;
 
-import java.util.Arrays;
 
-/**ac
+
+/**
+ * <=V的最大值
+ *
+ * -> 外卖优惠券,>=V的最小值
+ *
+ * ac
  * 将数组划分为两组， 两组分别求和之后的差最小:
  * <p>
  * 给出一个正整数数组，写一个程序把这个整数数组分成S1跟S2两部分，
@@ -29,7 +34,15 @@ public class MinimumPartition_LintCode724 {
         public int findMin(int[] nums) {
             // write your code here
             int n = nums.length;
-            int sum = Arrays.stream(nums).sum();
+
+            // 速度慢
+            // int sum = Arrays.stream(nums).sum();
+
+            int sum = 0;
+            for (int num : nums) {
+                sum += num;
+            }
+
             int V = sum / 2;
             int[][] dp = new int[n + 1][V + 1];
 
