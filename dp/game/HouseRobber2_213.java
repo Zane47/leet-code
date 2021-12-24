@@ -1,7 +1,5 @@
 package leetcode.dp.game;
 
-import com.sun.corba.se.impl.resolver.FileResolverImpl;
-
 /**
  * 你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。
  * <p>
@@ -65,7 +63,7 @@ public class HouseRobber2_213 {
             System.arraycopy(nums, 0, path1, 0, n - 1);
 
             int[] path2 = new int[n - 1];
-            System.arraycopy(nums, 1, path1, 0, n - 1);
+            System.arraycopy(nums, 1, path2, 0, n - 1);
 
             return Math.max(rob1(path1), rob1(path2));
         }
