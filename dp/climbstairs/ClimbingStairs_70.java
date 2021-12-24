@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.climbstairs;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.climbstairs;
 
 /**
  * 给你一个整数数组 cost ，其中 cost[i] 是从楼梯第 i 个台阶向上爬需要支付的费用。
