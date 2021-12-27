@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.climbstairs;
 
 
 public class FibonacciNumber_509 {

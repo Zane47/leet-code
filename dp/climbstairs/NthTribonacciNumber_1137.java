@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.climbstairs;
 
 /**
  * Tn+3 = Tn + Tn+1 + Tn+2
