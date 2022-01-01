@@ -43,16 +43,99 @@ package leetcode.dp.subsequence;
  */
 public class MaximumSumCircularSubarray_918 {
     public static void main(String[] args) {
-        int[] nums = new int[]{3, -1, 2, -1};
+//         int[] nums = new int[]{3, -1, 2, -1};
+//        int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+
+        // 全是负数
+        // int[] nums = new int[]{-3, -2, -3};
+
+        // 只有一个元素
+        // int[] nums = new int[]{-2};
+
+        int[] nums = new int[]{8, -15, -29, -19};
 
         System.out.println(new Solution().maxSubarraySumCircular(nums));
     }
 
+    /**
+     * 这道题目是53增加了环形的条件, 也就是说首尾相连, 那么最大的连续子序列有两种情况
+     * 1. 如果不是首尾相连的, 那么就和53一样了, 直接求最大的连续子序列
+     * 2. 如果是首尾相连的, 那么就反过来求序列和-最小的连续子序列, 而最小的连续子序列一定不会有首尾相连的情况
+     * 总结来说, 就是求max(maxArraySum, sum-minArraysum)
+     * <p>
+     * <p>
+     * 证明:
+     * 为什么首尾相连的qingkuangxia,
+     */
     static class Solution {
         public int maxSubarraySumCircular(int[] nums) {
 
+            if (nums.length == 1) {
+                return nums[0];
+            }
 
-            return 0;
+            int sum = 0;
+            for (int num : nums) {
+                sum += num;
+            }
+
+            // 最大子序列中是首尾不相连情况, 求连续子序列最大和
+            int max1 = maxSubArray(nums);
+
+            // 大子序列中是首尾相连情况, 求连续最小序列最小和
+            int min = minSubArray(nums);
+
+
+            return Math.max(max1, sum - min);
+        }
+
+        /**
+         * 最小的子序列和
+         */
+        private int minSubArray(int[] nums) {
+            int pre = 0;
+            int min = Integer.MAX_VALUE;
+            // 注意这里nums.length要-1
+            for (int i = 0; i < nums.length - 1; i++) {
+                // 注意这里是0, 也就是啥都不选
+                pre = Math.min(nums[i] + pre, 0);
+
+                min = Math.min(min, pre);
+            }
+            return min;
+        }
+
+        /**
+         * 这里就是lc_53的代码了
+         */
+        private int maxSubArray(int[] nums) {
+            int len = nums.length;
+            if (len == 1) {
+                return nums[0];
+            }
+
+            // 前一个数字
+            int pre = nums[0];
+            int dp = nums[0];
+
+            int max = nums[0];
+
+            for (int i = 1; i < len; i++) {
+                if (pre > 0) {
+                    dp = nums[i] + pre;
+                } else {
+                    dp = nums[i];
+                }
+                // 更新pre,
+                // 其实这里不需要dp, 直接都用pre就可以了
+                pre = dp;
+
+                if (dp > max) {
+                    max = dp;
+                }
+
+            }
+            return max;
         }
     }
 }

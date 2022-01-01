@@ -43,9 +43,29 @@ public class MaximumSubarray_53_2 {
     public static void main(String[] args) {
         int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
 //        int[] nums = new int[]{-2, -1};
-        System.out.println(new Solution2().maxSubArray(nums));
+        System.out.println(new Solution3().maxSubArray(nums));
     }
 
+
+    /**
+     * 一个参数即可
+     */
+    static class Solution3 {
+        public int maxSubArray(int[] nums) {
+            // 维护当前的子数组和
+            int pre = 0;
+
+            int maxAns = nums[0];
+            for (int i = 0; i < nums.length; i++) {
+                // 如果当前加了一个负数 肯定 就保留当前的值
+                pre = Math.max(nums[i] + pre, nums[i]);
+                // 滚动变量来求最大子数组和
+                maxAns = Math.max(pre, maxAns);
+            }
+
+            return maxAns;
+        }
+    }
 
     /**
      * solution2
