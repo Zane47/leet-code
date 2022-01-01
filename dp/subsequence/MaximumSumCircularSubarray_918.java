@@ -52,8 +52,10 @@ public class MaximumSumCircularSubarray_918 {
         // 只有一个元素
         // int[] nums = new int[]{-2};
 
-        int[] nums = new int[]{8, -15, -29, -19};
+//        int[] nums = new int[]{8, -15, -29, -19};
 
+        // 环形测试
+        int[] nums = new int[]{5, -3, 5};
         System.out.println(new Solution().maxSubarraySumCircular(nums));
     }
 
@@ -82,6 +84,12 @@ public class MaximumSumCircularSubarray_918 {
             // 最大子序列中是首尾不相连情况, 求连续子序列最大和
             int max1 = maxSubArray(nums);
 
+            // 如果最大和max小于0；证明数组中没有正数；所以也就不用关心是不是环形的数组了 直接返回max
+            // （一位都是负数难道你还绕过来加一个负数？）
+            if (max1 < 0) {
+                return max1;
+            }
+
             // 大子序列中是首尾相连情况, 求连续最小序列最小和
             int min = minSubArray(nums);
 
@@ -95,10 +103,14 @@ public class MaximumSumCircularSubarray_918 {
         private int minSubArray(int[] nums) {
             int pre = 0;
             int min = Integer.MAX_VALUE;
-            // 注意这里nums.length要-1
-            for (int i = 0; i < nums.length - 1; i++) {
+
+            for (int i = 0; i < nums.length; i++) {
                 // 注意这里是0, 也就是啥都不选
+                // 如果全部都是正数, 因为题目整体要求的是最大值,
                 pre = Math.min(nums[i] + pre, 0);
+
+                // 这个也可以
+                // pre = Math.min(nums[i] + pre, nums[i]);
 
                 min = Math.min(min, pre);
             }
