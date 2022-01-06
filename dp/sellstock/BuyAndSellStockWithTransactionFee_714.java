@@ -14,6 +14,55 @@ public class BuyAndSellStockWithTransactionFee_714 {
 
     }
 
+    /**
+     * buy的时候交手续费
+     * 降低空间复杂度, i只与i-1有关
+     */
+    static class Solution22 {
+        public int maxProfit(int[] prices, int fee) {
+            int dp_pre_0 = 0;
+            int dp_pre_1 = -prices[0] - fee;
+
+            int dp_cur_0 = 0;
+            int dp_cur_1 = 0;
+
+
+            for (int i = 1; i < prices.length; i++) {
+                dp_cur_0 = Math.max(dp_pre_0, dp_pre_1 + prices[i]);
+                dp_cur_1 = Math.max(dp_pre_1, dp_pre_0 - prices[i] - fee);
+
+                dp_pre_0 = dp_cur_0;
+                dp_pre_1 = dp_cur_1;
+            }
+
+            return dp_cur_0;
+        }
+    }
+
+
+    /**
+     * sell的时候交手续费
+     * 降低空间复杂度, i只与i-1有关
+     */
+    static class Solution11 {
+        public int maxProfit(int[] prices, int fee) {
+            int dp_pre_0 = 0;
+            int dp_pre_1 = -prices[0];
+
+            int dp_cur_0 = 0;
+            int dp_cur_1 = 0;
+
+            for (int i = 1; i < prices.length; i++) {
+                dp_cur_0 = Math.max(dp_pre_0, dp_pre_1 + prices[i] - fee);
+                dp_cur_1 = Math.max(dp_pre_1, dp_pre_0 - prices[i]);
+
+                dp_pre_0 = dp_cur_0;
+                dp_pre_1 = dp_cur_1;
+            }
+
+            return dp_cur_0;
+        }
+    }
 
     /**
      * # 状态转移1
