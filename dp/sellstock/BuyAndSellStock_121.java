@@ -1,7 +1,7 @@
 package leetcode.dp.sellstock;
 // 121. 买卖股票的最佳时机
 
-public class BestTimeToBuyAndSellStock_121 {
+public class BuyAndSellStock_121 {
 
     public static void main(String[] args) {
         // Solution1 solution = new Solution1();

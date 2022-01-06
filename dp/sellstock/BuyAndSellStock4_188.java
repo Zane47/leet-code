@@ -1,6 +1,6 @@
 package leetcode.dp.sellstock;
 
-public class BestTimeToBuyAndSellStock4_188 {
+public class BuyAndSellStock4_188 {
     public static void main(String[] args) {
 
         int[] prices = new int[]{};
