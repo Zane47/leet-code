@@ -26,27 +26,26 @@ public class BestTimeToBuyAndSellStock_121_2 {
      * dp[0][0] = 0
      * dp[0][1] = -prices[i];
      *
-     *
      * # 只与前一个状态有关
-     *
-     *
      */
     static class Solution {
         public int maxProfit(int[] prices) {
             int n = prices.length;
-            int dp_0_0 = 0;
-            int dp_0_1 = -prices[0];
+            int dp_pre_0 = 0;
+            int dp_pre_1 = -prices[0];
 
-            int dp_result_0 = 0;
-            int dp_result_1 = 0;
+            int dp_cur_0 = 0;
+            int dp_cur_1 = 0;
 
             for (int i = 1; i < n; i++) {
-                /*dp_result_0 = Math.max();
+                dp_cur_0 = Math.max(dp_pre_0, dp_pre_1 + prices[i]);
+                dp_cur_1 = Math.max(dp_pre_1, -prices[i]);
 
-                dp_result_1 = Math.max();*/
+                dp_pre_0 = dp_cur_0;
+                dp_pre_1 = dp_cur_1;
             }
 
-            return dp_result_0;
+            return dp_cur_0;
         }
     }
 
