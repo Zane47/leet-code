@@ -1,6 +1,5 @@
 package leetcode.dp.bag;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
