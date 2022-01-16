@@ -1,4 +1,4 @@
-package leetcode.others;
+package leetcode.structure.queue;
 
 import javax.swing.*;
 import java.lang.reflect.Array;
