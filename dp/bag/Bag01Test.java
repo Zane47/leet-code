@@ -55,7 +55,9 @@ public class Bag01Test {
                     dp[i][v] = dp[i - 1][v];
                 } else {
                     // 物品i可以放入背包,重量小于背包容量, 看要不要放入
-                    dp[i][v] = Math.max(dp[i - 1][v], dp[i - 1][v - weight[i - 1]] + value[i - 1]);
+                    dp[i][v] = Math.max(
+                            dp[i - 1][v],
+                            dp[i - 1][v - weight[i - 1]] + value[i - 1]);
                 }
             }
         }
