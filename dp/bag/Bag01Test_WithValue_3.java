@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 一维dp数组
  * 空间复杂度 O(V)
  */
-public class Bag01Test_3 {
+public class Bag01Test_WithValue_3 {
     public static void main(String[] args) {
         int[] weight = {1, 3, 4};
         int[] value = {15, 20, 30};

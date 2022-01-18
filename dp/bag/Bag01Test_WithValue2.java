@@ -19,7 +19,7 @@ package leetcode.dp.bag;
  * dp[i - 1][v - weight[i]] 为背包容量为j - weight[i]的时候不放物品i的最大价值，
  * 那么dp[i - 1][v - weight[i]] + value[i](物品i的价值), 就是背包放物品i得到的最大价值
  */
-public class Bag01Test {
+public class Bag01Test_WithValue2 {
 
     public static void main(String[] args) {
         int[] weight = {1, 3, 4};
