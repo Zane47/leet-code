@@ -2,6 +2,9 @@ package leetcode.dp.bag;
 
 /**不带价值
  * 最多可以装多满
+ *
+ * dp[i][j]: 前i个数中挑出若干个数能否凑成j
+ *
  * -> 能否凑成bagSize, boolean, 然后找可以凑成的最大v
  *
  */

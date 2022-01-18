@@ -1,10 +1,9 @@
 package leetcode.dp.bag;
 
-import java.util.Arrays;
 
 /**不带价值
  * 最多可以装多满
- *
+ * dp[i][j]: 前i个数中挑出若干个数总和<=j的最大和是多少
  */
 public class Bag01Test2_WithoutValue {
 
