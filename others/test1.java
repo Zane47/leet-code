@@ -1,4 +1,4 @@
-package leetcode.recursionandbacktrack.backtrack;
+package leetcode.others;
 
 
 import java.util.Scanner;
