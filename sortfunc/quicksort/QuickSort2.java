@@ -1,5 +1,16 @@
 package leetcode.sortfunc.quicksort;
 
+/**
+ * 空间复杂度: O(1)
+ *
+ * 时间复杂度: 最好的情况: O(nlogn), 最差情况: O(n^2)
+ *
+ * 其中partition中的for遍历就是n, 这个是无法省略的,
+ * 区别的点就在于quickSort该方法:
+ * 计算partitionIndex, 因为是按照partitionIndex的位置来进行递归向下
+ * 如果最差的情况, 每次的partitionIndex就是left+1
+ * 如果最好的情况, 每次的partitionindex就是二分
+ */
 public class QuickSort2 {
 
     public static void main(String[] args) {
