@@ -1,4 +1,4 @@
-package leetcode.structure.Heap;
+package leetcode.structure.heap;
 
 /**
  * 最大堆和最小堆是二叉堆的两种形式。

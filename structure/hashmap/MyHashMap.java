@@ -1,4 +1,4 @@
-package leetcode.structure.HashMap;
+package leetcode.structure.hashmap;
 
 // https://juejin.cn/post/6844903920947429390
 public class MyHashMap<K, V> {
